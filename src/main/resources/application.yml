@@ -26,3 +26,15 @@ spring:
 wechat:
   mpAppId: wx05799f115ff77cec
   mpAppSecret: 3df4cc7b7194ae72a02f24d00f833def
+  miniapp:
+    appid: wxa6dca10c030f20e3
+    secret: ae65701b457671a2898affbaab0008a6
+    token:
+    aesKey:
+    msgDataFormat: JSON
+
+debug: true
+logging:
+  level:
+    org.springframework.web: DEBUG
+    com.github.binarywang.demo.wechat: DEBUG

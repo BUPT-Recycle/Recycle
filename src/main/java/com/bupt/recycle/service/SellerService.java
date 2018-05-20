@@ -7,5 +7,8 @@ package com.bupt.recycle.service;
  */
 public interface SellerService {
 
+    //登陆使用微信的授权校验
+
+    //根据openid
 
 }
