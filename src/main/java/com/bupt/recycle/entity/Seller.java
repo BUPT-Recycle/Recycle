@@ -26,5 +26,9 @@ public class Seller {
 
     private String seller_addr;
 
+    private String sessionKey;
+
+    private String seller_uuid;
+
 
 }

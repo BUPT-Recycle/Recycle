@@ -1,6 +1,8 @@
 package com.bupt.recycle.service.impl;
 
+import com.bupt.recycle.repository.SellerRepository;
 import com.bupt.recycle.service.SellerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,4 +16,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class SellerServiceImpl implements SellerService {
 
+    @Autowired
+    SellerRepository sellerRepository;
+
+    @Override
+    public void saveOpenId(String openid) {
+
+    }
+
+    @Override
+    public void getSeller(String openid) {
+
+    }
 }

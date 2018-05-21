@@ -7,8 +7,10 @@ package com.bupt.recycle.service;
  */
 public interface SellerService {
 
-    //登陆使用微信的授权校验
+    //保存openid
+    void saveOpenId(String openid);
 
-    //根据openid
+    //根据openid返回Seller实例
+    void getSeller(String openid);
 
 }
