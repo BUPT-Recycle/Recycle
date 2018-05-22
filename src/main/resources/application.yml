@@ -4,10 +4,10 @@ spring:
     username: root
     password: recycle123
     driver-class-name: com.mysql.jdbc.Driver
-
+  #jpa
   jpa:
     show-sql: true
-
+  #重定向转发配置
   mvc:
     throw-exception-if-no-handler-found: true
     static-path-pattern: /**
@@ -23,6 +23,15 @@ spring:
     suffix: .html
     encoding: UTF-8
 
+  #redis配置
+  redis:
+    database: 0
+    host: 111.231.132.76
+    port: 6379
+    paasword:
+    timeout: 300ms
+
+#微信相关配置
 wechat:
   mpAppId: wx05799f115ff77cec
   mpAppSecret: 3df4cc7b7194ae72a02f24d00f833def
@@ -32,9 +41,11 @@ wechat:
     token:
     aesKey:
     msgDataFormat: JSON
-
+#日志配置
 debug: true
 logging:
   level:
     org.springframework.web: DEBUG
     com.github.binarywang.demo.wechat: DEBUG
+
+

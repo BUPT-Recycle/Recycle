@@ -1,5 +1,6 @@
 package com.bupt.recycle.service.impl;
 
+import com.bupt.recycle.entity.Seller;
 import com.bupt.recycle.repository.SellerRepository;
 import com.bupt.recycle.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class SellerServiceImpl implements SellerService {
     SellerRepository sellerRepository;
 
     @Override
-    public void saveOpenId(String openid) {
-
+    public void saveSeller(Seller seller) {
+        sellerRepository.save(seller);
     }
 
     @Override
