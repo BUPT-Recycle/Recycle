@@ -31,8 +31,6 @@ public class WorkerRepositoryTest {
         worker.setWorker_star(5.0);
         worker.setWorker_tel("13011816363");
         worker.setWorker_id_card("440918****4242");
-
-
         workerRepository.save(worker);
     }
 

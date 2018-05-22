@@ -26,7 +26,7 @@ public class Seller {
 
     private String seller_addr;
 
+    @Column(name = "avatarurl")
     private String avatarUrl;
-
 
 }

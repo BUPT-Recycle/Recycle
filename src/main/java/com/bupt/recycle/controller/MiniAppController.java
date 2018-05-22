@@ -4,6 +4,8 @@ import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import cn.binarywang.wx.miniapp.bean.WxMaPhoneNumberInfo;
 import cn.binarywang.wx.miniapp.bean.WxMaUserInfo;
+import com.bupt.recycle.entity.Seller;
+import com.bupt.recycle.service.SellerService;
 import com.bupt.recycle.utils.JsonUtils;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.exception.WxErrorException;
@@ -27,6 +29,9 @@ public class MiniAppController {
 
     @Autowired
     private WxMaService wxService;
+
+    @Autowired
+    private SellerService sellerService;
 
     @Autowired
     private RedisTemplate<String,Object> redisTemplate;
@@ -85,7 +90,14 @@ public class MiniAppController {
 
         // 解密用户信息
         WxMaUserInfo userInfo = this.wxService.getUserService().getUserInfo(session.getSessionKey(), encryptedData, iv);
+        log.info(JsonUtils.toJson(userInfo));
+        Seller seller = new Seller();
+        seller.setSeller_openid(userInfo.getOpenId());
+        seller.setAvatarUrl(userInfo.getAvatarUrl());
 
+        seller.setSeller_nickname(userInfo.getNickName());
+
+        sellerService.saveSeller(seller);
 
         return "success";
     }

@@ -1,9 +1,12 @@
 spring:
   datasource:
-    url: jdbc:mysql://sh-cdb-ow7uekkj.sql.tencentcdb.com:63183/recycle?characterEncoding=utf-8&useSSL=false
+    url: jdbc:mysql://sh-cdb-ow7uekkj.sql.tencentcdb.com:63183/recycle?useUnicode=true&useSSL=false
     username: root
     password: recycle123
     driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      connection-init-sql: SET NAMES utf8mb4
+
   #jpa
   jpa:
     show-sql: true
@@ -29,7 +32,7 @@ spring:
     host: 111.231.132.76
     port: 6379
     paasword:
-    timeout: 300ms
+    timeout: 1000ms
 
 #微信相关配置
 wechat:
@@ -42,7 +45,6 @@ wechat:
     aesKey:
     msgDataFormat: JSON
 #日志配置
-debug: true
 logging:
   level:
     org.springframework.web: DEBUG
