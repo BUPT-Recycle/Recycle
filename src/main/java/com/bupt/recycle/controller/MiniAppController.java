@@ -76,7 +76,7 @@ public class MiniAppController {
     }
 
     //授权的同时进行入库
-    @GetMapping("/info")
+    @PostMapping("/info")
     public String info(@RequestParam(name = "rsession") String rsession, @RequestParam(name = "signature")String signature,
                        @RequestParam(name = "rawData")String rawData, @RequestParam(name = "encryptedData")String encryptedData,
                        @RequestParam(name = "iv")String iv) {
@@ -89,6 +89,7 @@ public class MiniAppController {
         }
 
         // 解密用户信息
+        //TODO 需要判断库内是否已经存在（表不设置unique key）
         WxMaUserInfo userInfo = this.wxService.getUserService().getUserInfo(session.getSessionKey(), encryptedData, iv);
         log.info(JsonUtils.toJson(userInfo));
         Seller seller = new Seller();
@@ -102,6 +103,8 @@ public class MiniAppController {
         return "success";
     }
 
+
+    //暂时不适用，需要权限
     @GetMapping("/phone")
     public String phone(@RequestParam(name = "rsession") String rsession, @RequestParam(name = "signature")String signature,
                         @RequestParam(name = "rawData")String rawData, @RequestParam(name = "encryptedData")String encryptedData,

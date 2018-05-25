@@ -1,6 +1,7 @@
 package com.bupt.recycle.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
@@ -15,6 +16,7 @@ import javax.persistence.*;
 @Table(name="seller")
 @Data
 @DynamicUpdate
+@DynamicInsert
 public class Seller {
 
     @Id

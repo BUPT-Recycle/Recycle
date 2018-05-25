@@ -3,9 +3,12 @@ package com.bupt.recycle.service.impl;
 import com.bupt.recycle.entity.Seller;
 import com.bupt.recycle.repository.SellerRepository;
 import com.bupt.recycle.service.SellerService;
+import jdk.nashorn.internal.runtime.options.Option;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 /**
  * @anthor tanshangou
@@ -26,7 +29,15 @@ public class SellerServiceImpl implements SellerService {
     }
 
     @Override
-    public void getSeller(String openid) {
+    public Object getSeller(String openid) {
 
+        Optional<Seller> sellerOptional=sellerRepository.findById(openid);
+        return sellerOptional.orElse(null);
+    }
+
+    @Override
+    public int setExtraInfo(String address, String phone, String openid) {
+
+        return sellerRepository.setSellerAddrAndPhone(address,phone,openid);
     }
 }

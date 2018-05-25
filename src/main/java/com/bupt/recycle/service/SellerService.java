@@ -13,6 +13,8 @@ public interface SellerService {
     void saveSeller(Seller seller);
 
     //根据openid返回Seller实例
-    void getSeller(String openid);
+    Object getSeller(String openid);
+
+    int setExtraInfo(String address,String phone,String openid);
 
 }
