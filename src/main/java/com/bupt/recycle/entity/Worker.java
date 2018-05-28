@@ -21,7 +21,7 @@ public class Worker {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long worker_id;
+    private int worker_id;
 
     @NotNull(message = "name cannot be null")
     private String worker_name;

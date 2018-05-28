@@ -19,11 +19,10 @@ public class OrderDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long detail_id;
+    private int detail_id;
 
-    private Long order_id;
-
-    private Long product_id;
+    @Column(name = "order_id")
+    private int orderId;
 
     private String product_name;
 
