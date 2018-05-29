@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface OrderService {
 
-    void createOrder(OrderModel orderModel);
+    Order createOrder(OrderModel orderModel);
 
     Object getAnOrder(int orderId);
 

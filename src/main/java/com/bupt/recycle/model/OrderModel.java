@@ -19,7 +19,7 @@ public class OrderModel {
     private String sellerName;
     private String sellerTel;
     private String sellerAddr;
-    private String sellerOpenid;
+    private String rsession;
     private Integer workerId;
     private String workerArea;
     private int payState;

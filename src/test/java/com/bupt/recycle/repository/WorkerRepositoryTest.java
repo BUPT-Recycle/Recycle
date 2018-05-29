@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.*;
 
@@ -17,6 +18,7 @@ import static org.junit.Assert.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
+@Transactional
 public class WorkerRepositoryTest {
 
     @Autowired
@@ -32,6 +34,11 @@ public class WorkerRepositoryTest {
         worker.setWorker_tel("13011816363");
         worker.setWorker_id_card("440918****4242");
         workerRepository.save(worker);
+    }
+
+    @Test
+    public void star(){
+        workerRepository.setWorkerStarById(5.0,7);
     }
 
 }

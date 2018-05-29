@@ -14,4 +14,9 @@ public interface WorkerService {
 
     //登陆
     public void login();
+
+    //评分
+    public int star(Double star,int workerId);
+
+    Object getWorker(int workerId);
 }

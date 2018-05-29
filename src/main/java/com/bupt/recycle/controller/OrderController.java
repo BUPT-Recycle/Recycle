@@ -50,8 +50,7 @@ public class OrderController {
 
     @PostMapping("/order")
     public String saveOrder(@RequestBody OrderModel orderModel){
-
-        orderService.createOrder(orderModel);
-        return "success";
+        Order order = orderService.createOrder(orderModel);
+        return JsonUtils.toJson(order);
     }
 }

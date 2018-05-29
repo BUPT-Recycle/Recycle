@@ -5,6 +5,7 @@ import com.bupt.recycle.entity.Worker;
 import com.bupt.recycle.exception.WorkerException;
 import com.bupt.recycle.model.ResultModel;
 import com.bupt.recycle.service.WorkerService;
+import com.bupt.recycle.utils.JsonUtils;
 import com.bupt.recycle.utils.ResultUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import javax.validation.Valid;
  */
 
 @RestController
-@RequestMapping("/recycle")
+@RequestMapping("/mini")
 @Slf4j
 public class WorkerController {
 
@@ -43,8 +44,14 @@ public class WorkerController {
         throw new WorkerException(ResultEnum.REGISTER_FAILED.getCode(),ResultEnum.REGISTER_FAILED.getMsg());
     }
 
-    @GetMapping("/worker/start")
-    public String getWorkerStars(){
-        return "";
+    @GetMapping("/worker/{id}")
+    public String getAnWorker(@PathVariable(name = "id")int workerId){
+        Worker worker = (Worker) workerService.getWorker(workerId);
+        return JsonUtils.toJson(worker);
+    }
+
+    @PostMapping("/worker/star")
+    public String starAtWorker(){
+        return "success";
     }
 }

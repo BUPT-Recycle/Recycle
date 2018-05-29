@@ -1,14 +1,18 @@
 package com.bupt.recycle.service.impl;
 
+import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import com.bupt.recycle.entity.Order;
 import com.bupt.recycle.entity.OrderDetail;
+import com.bupt.recycle.entity.Worker;
 import com.bupt.recycle.model.OrderModel;
 import com.bupt.recycle.repository.OrderDetailRepository;
 import com.bupt.recycle.repository.OrderRepository;
+import com.bupt.recycle.repository.WorkerRepository;
 import com.bupt.recycle.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,13 +33,23 @@ public class OrderServiceImpl implements OrderService {
     OrderRepository orderRepository;
     @Autowired
     OrderDetailRepository orderDetailRepository;
+    @Autowired
+    WorkerRepository workerRepository;
+    @Autowired
+    RedisTemplate<String,Object> redisTemplate;
 
     @Override
     @Transactional
-    public void createOrder(OrderModel orderModel) {
+    public Order createOrder(OrderModel orderModel) {
 
         Order order = new Order();
         BeanUtils.copyProperties(orderModel,order);
+        WxMaJscode2SessionResult wxMaJscode2SessionResult=
+                (WxMaJscode2SessionResult) redisTemplate.opsForValue().get(orderModel.getRsession());
+        order.setSellerOpenid(wxMaJscode2SessionResult.getOpenid());
+        order.setWorkerId(7);
+        Worker worker = workerRepository.findById(order.getWorkerId()).orElse(null);
+        order.setWorkerArea(worker.getWorker_area());
         List<OrderDetail> orderDetailList = orderModel.getOrderDetail();
 
         Order orderResult=orderRepository.save(order);
@@ -43,6 +57,7 @@ public class OrderServiceImpl implements OrderService {
             orderDetail.setOrderId(orderResult.getOrderId());
         }
         orderDetailRepository.saveAll(orderDetailList);
+        return orderResult;
     }
 
     @Override
