@@ -33,6 +33,11 @@ public class ProductController {
         return JsonUtils.toJson(product);
     }
 
+    @GetMapping("/product")
+    public String getProductList(){
+        List<Product> productList = productService.getProductList();
+        return JsonUtils.toJson(productList);
+    }
     @GetMapping("/category/{id}")
     public String getProductList(@PathVariable(name = "id")int categoryId){
         List<Product> productList = productService.getProductListByCategory(categoryId);
@@ -41,7 +46,6 @@ public class ProductController {
 
     @GetMapping("/category")
     public String getCategoryList(){
-
         List<Category> categoryList = categoryService.getCategoryList();
         return JsonUtils.toJson(categoryList);
     }
