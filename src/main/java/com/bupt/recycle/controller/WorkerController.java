@@ -44,7 +44,7 @@ public class WorkerController {
         throw new WorkerException(ResultEnum.REGISTER_FAILED.getCode(),ResultEnum.REGISTER_FAILED.getMsg());
     }
 
-    @PostMapping("/worker")
+    @GetMapping("/worker")
     public Worker login(@RequestParam(name = "workerPhone")String workerPhone,
                         @RequestParam(name = "workerPassword")String workerPassword){
 
