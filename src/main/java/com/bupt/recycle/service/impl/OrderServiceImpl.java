@@ -82,5 +82,15 @@ public class OrderServiceImpl implements OrderService {
         return orderList;
     }
 
+    @Override
+    public int updatePayState(int payState, int orderId) {
+        int result=orderRepository.setPayState(payState,orderId);
+        return result;
+    }
 
+    @Override
+    public List<Order> getOrderListByState(int payState) {
+        List<Order> orderList=orderRepository.findByPayState(payState);
+        return orderList;
+    }
 }

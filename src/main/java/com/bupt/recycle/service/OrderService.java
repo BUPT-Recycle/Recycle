@@ -19,4 +19,8 @@ public interface OrderService {
     List<Order> getOrderList(String openid);
 
     //Object getOrderDetail();
+
+    int updatePayState(int payState,int orderId);
+
+    List<Order> getOrderListByState(int payState);
 }

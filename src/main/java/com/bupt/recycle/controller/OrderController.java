@@ -53,4 +53,20 @@ public class OrderController {
         Order order = orderService.createOrder(orderModel);
         return JsonUtils.toJson(order);
     }
+
+    @PostMapping("/order/payState")
+    public String changeState(@RequestParam (name = "payState")int payState,
+                              @RequestParam(name = "orderId")int orderId){
+
+        int result=orderService.updatePayState(payState,orderId);
+        return String.valueOf(result);
+    }
+
+    @GetMapping("/order/payState/{payState}")
+    public String getOrderListByState(@PathVariable(name = "payState") int payState){
+
+        List<Order> orderList=orderService.getOrderListByState(payState);
+
+        return JsonUtils.toJson(orderList);
+    }
 }

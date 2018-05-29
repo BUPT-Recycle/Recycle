@@ -44,13 +44,17 @@ public class WorkerController {
         throw new WorkerException(ResultEnum.REGISTER_FAILED.getCode(),ResultEnum.REGISTER_FAILED.getMsg());
     }
 
-    @GetMapping("/worker")
-    public Worker login(@RequestParam(name = "workerPhone")String workerPhone,
+    @PostMapping("/worker")
+    public String login(@RequestParam(name = "workerPhone")String workerPhone,
                         @RequestParam(name = "workerPassword")String workerPassword){
 
 
         Worker worker = workerService.login(workerPhone,workerPassword);
-        return worker;
+        if(worker!=null){
+            return JsonUtils.toJson(worker);
+        }else {
+            return "error";
+        }
     }
     @GetMapping("/worker/{id}")
     public String getAnWorker(@PathVariable(name = "id")int workerId){
