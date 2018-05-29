@@ -31,8 +31,9 @@ public class Worker {
     private String worker_password;
 
 
+    @Column(name = "worker_tel")
     @NotNull(message = "phone cannot be null")
-    private String worker_tel;
+    private String workerPhone;
 
     @NotNull(message = "area cannot be null")
     private String worker_area;

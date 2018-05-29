@@ -13,7 +13,7 @@ public interface WorkerService {
     public Worker register(Worker worker);
 
     //登陆
-    public void login();
+    public Worker login(String workerPhone,String workerPassword);
 
     //评分
     public int star(Double star,int workerId);

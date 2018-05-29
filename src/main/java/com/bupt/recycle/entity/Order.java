@@ -25,7 +25,7 @@ public class Order {
     private String workerArea;
     private int payState;
     private Double orderAmount;
-    private Timestamp orderTime;
+    private String orderTime;
 
     @Id
     @Column(name = "order_id", nullable = false)
@@ -129,11 +129,11 @@ public class Order {
 
     @Basic
     @Column(name = "order_time", nullable = true)
-    public Timestamp getOrderTime() {
+    public String getOrderTime() {
         return orderTime;
     }
 
-    public void setOrderTime(Timestamp orderTime) {
+    public void setOrderTime(String orderTime) {
         this.orderTime = orderTime;
     }
 

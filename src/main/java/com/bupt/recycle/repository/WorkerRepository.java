@@ -21,4 +21,5 @@ public interface WorkerRepository extends JpaRepository<Worker,Integer> {
     @Query("update Worker w set w.worker_star=?1 where w.worker_id=?2")
     int setWorkerStarById(Double workerStar,int workerId);
 
+    Worker findByWorkerPhone(String workerPhone);
 }

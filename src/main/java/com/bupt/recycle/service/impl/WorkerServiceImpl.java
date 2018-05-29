@@ -27,8 +27,14 @@ public class WorkerServiceImpl implements WorkerService {
     }
 
     @Override
-    public void login() {
+    public Worker login(String workerPhone, String workerPassword) {
 
+        Worker worker = workerRepository.findByWorkerPhone(workerPhone);
+        if(worker.getWorker_password().equals(workerPassword)){
+            return worker;
+        }else {
+            return null;
+        }
     }
 
     @Override

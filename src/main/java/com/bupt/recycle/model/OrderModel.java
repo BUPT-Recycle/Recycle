@@ -24,6 +24,6 @@ public class OrderModel {
     private String workerArea;
     private int payState;
     private Double orderAmount;
-    private Timestamp orderTime;
+    private String orderTime;
     private List<OrderDetail> orderDetail;
 }
