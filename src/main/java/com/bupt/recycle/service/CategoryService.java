@@ -2,6 +2,8 @@ package com.bupt.recycle.service;
 
 import com.bupt.recycle.entity.Category;
 
+import java.util.List;
+
 /**
  * @anthor tanshangou
  * @time 2018/5/26
@@ -9,5 +11,6 @@ import com.bupt.recycle.entity.Category;
  */
 public interface CategoryService {
 
-    void saveCategory(Category category);
+    List<Category> getCategoryList();
+
 }

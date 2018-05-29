@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @time 2018/5/26
  * @description
  */
-public interface CategoryRepository extends JpaRepository<Category,Long> {
+public interface CategoryRepository extends JpaRepository<Category,Integer> {
 
 }

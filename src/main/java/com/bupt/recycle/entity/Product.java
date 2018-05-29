@@ -19,11 +19,12 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long product_id;
+    private int product_id;
     private String product_name;
     private String product_description;
     private String product_stock;
     private String product_price;
-    private String category_id;
+    @Column(name = "category_id")
+    private int categoryId;
 
 }

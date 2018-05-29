@@ -29,7 +29,7 @@ public class OrderController {
     @Autowired
     RedisTemplate<String,Object> redisTemplate;
 
-    @GetMapping("/orderlist")
+    @GetMapping("/order")
     public String getOrderList(@RequestParam("rsession") String rsession){
 
         WxMaJscode2SessionResult sessionResult = (WxMaJscode2SessionResult) redisTemplate.opsForValue().get(rsession);
@@ -39,9 +39,8 @@ public class OrderController {
         return JsonUtils.toJson(orderList);
     }
 
-    @GetMapping("/order")
-    public String getOrder(@RequestParam("orderId") int orderId){
-
+    @GetMapping("/order/{orderId}")
+    public String getOrder(@PathVariable("orderId") int orderId){
         OrderModel orderModel = (OrderModel) orderService.getAnOrder(orderId);
         if(orderModel!=null){
             return JsonUtils.toJson(orderModel);

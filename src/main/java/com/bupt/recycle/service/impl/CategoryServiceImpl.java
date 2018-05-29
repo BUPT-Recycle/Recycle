@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * @anthor tanshangou
  * @time 2018/5/26
@@ -22,8 +24,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     CategoryRepository categoryRepository;
 
+
     @Override
-    public void saveCategory(Category category) {
-        categoryRepository.save(category);
+    public List<Category> getCategoryList() {
+        List<Category> categoryList=categoryRepository.findAll();
+
+        return categoryList;
     }
 }

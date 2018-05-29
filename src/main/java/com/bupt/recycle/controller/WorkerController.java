@@ -6,6 +6,7 @@ import com.bupt.recycle.exception.WorkerException;
 import com.bupt.recycle.model.ResultModel;
 import com.bupt.recycle.service.WorkerService;
 import com.bupt.recycle.utils.ResultUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.BindingResult;
@@ -21,6 +22,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/recycle")
+@Slf4j
 public class WorkerController {
 
     @Autowired
@@ -39,5 +41,10 @@ public class WorkerController {
             return ResultUtil.success(worker_);
         }
         throw new WorkerException(ResultEnum.REGISTER_FAILED.getCode(),ResultEnum.REGISTER_FAILED.getMsg());
+    }
+
+    @GetMapping("/worker/start")
+    public String getWorkerStars(){
+        return "";
     }
 }
