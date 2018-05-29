@@ -29,20 +29,20 @@ public class WorkerController {
     @Autowired
     WorkerService workerService;
 
-    @PostMapping("/worker")
-    public ResultModel register(@RequestBody @Valid Worker worker, BindingResult bindingResult){
-
-        if(bindingResult.hasErrors()){
-
-            throw new WorkerException(1,bindingResult.getFieldError().getDefaultMessage());
-        }
-
-        Worker worker_ = workerService.register(worker);
-        if (worker_!=null){
-            return ResultUtil.success(worker_);
-        }
-        throw new WorkerException(ResultEnum.REGISTER_FAILED.getCode(),ResultEnum.REGISTER_FAILED.getMsg());
-    }
+//    @PostMapping("/worker")
+//    public ResultModel register(@RequestBody @Valid Worker worker, BindingResult bindingResult){
+//
+//        if(bindingResult.hasErrors()){
+//
+//            throw new WorkerException(1,bindingResult.getFieldError().getDefaultMessage());
+//        }
+//
+//        Worker worker_ = workerService.register(worker);
+//        if (worker_!=null){
+//            return ResultUtil.success(worker_);
+//        }
+//        throw new WorkerException(ResultEnum.REGISTER_FAILED.getCode(),ResultEnum.REGISTER_FAILED.getMsg());
+//    }
 
     @PostMapping("/worker")
     public String login(@RequestParam(name = "workerPhone")String workerPhone,
