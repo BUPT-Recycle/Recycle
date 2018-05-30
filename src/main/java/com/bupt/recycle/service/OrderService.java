@@ -22,5 +22,5 @@ public interface OrderService {
 
     int updatePayState(int payState,int orderId);
 
-    List<Order> getOrderListByState(int payState);
+    List<Order> getOrderListByState(int payState,String rsession);
 }

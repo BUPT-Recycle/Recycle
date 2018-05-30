@@ -89,8 +89,12 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> getOrderListByState(int payState) {
-        List<Order> orderList=orderRepository.findByPayState(payState);
+    public List<Order> getOrderListByState(int payState,String rsession) {
+        WxMaJscode2SessionResult wxMaJscode2SessionResult=
+                (WxMaJscode2SessionResult) redisTemplate.opsForValue().get(rsession);
+
+        List<Order> orderList=orderRepository.findByPayStateAndSellerOpenid(payState,
+                wxMaJscode2SessionResult.getOpenid());
         return orderList;
     }
 }

@@ -63,7 +63,8 @@ public class OrderController {
     }
 
     @GetMapping("/order/payState/{payState}")
-    public String getOrderListByState(@PathVariable(name = "payState") int payState){
+    public String getOrderListByState(@PathVariable(name = "payState") int payState,
+                                      @RequestParam(name = "rsession") String rsession){
 
         List<Order> orderList=orderService.getOrderListByState(payState);
 

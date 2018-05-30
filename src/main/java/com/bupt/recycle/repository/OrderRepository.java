@@ -17,7 +17,7 @@ public interface OrderRepository extends JpaRepository<Order,Integer> {
 
     List<Order> findBySellerOpenid(String openId);
 
-    List<Order> findByPayState(int payState);
+    List<Order> findByPayStateAndSellerOpenid(int payState,String sellerOpenid);
 
 
     @Transactional
