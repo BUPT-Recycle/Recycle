@@ -66,7 +66,7 @@ public class OrderController {
     public String getOrderListByState(@PathVariable(name = "payState") int payState,
                                       @RequestParam(name = "rsession") String rsession){
 
-        List<Order> orderList=orderService.getOrderListByState(payState);
+        List<Order> orderList=orderService.getOrderListByState(payState,rsession);
 
         return JsonUtils.toJson(orderList);
     }
